@@ -137,7 +137,7 @@ ___
 ## 👨‍💻 **ABOUT THE DEVELOPER**  
   
 **Name:** **`SHUVO`**  
-**Nice Name:** **`SA HU`**  
+**Nice Name:** **`SHUVO`**  
 **Profession:** **`STUDENT & CHATBOT DEVELOPER`**  
 **Location:** **`BOGURA, BANGLADESH`**  
 
