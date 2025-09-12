@@ -7,7 +7,7 @@ module.exports.config = {
  name: "admin",
  version: "1.0.0",
  hasPermssion: 0,
- credits: "𝐒𝐡uvo 𝐈𝐬𝐥𝐚𝐦",
+ credits: "𝐒𝐡uvo",
  description: "Show Owner Info",
  commandCategory: "/admin",
  usages: "admin",
