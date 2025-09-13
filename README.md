@@ -1,6 +1,6 @@
 ---------
 
-### —͟͟͞͞𝐒𝐇UVO 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓  𝐅𝐎𝐑𝐊  🌺
+### —͟͟͞͞𝐒𝐇𝐔𝐕𝐎  𝐂𝐇𝐀𝐓 𝐁𝐎𝐓  𝐅𝐎𝐑𝐊  🌺
 
 ❖ **`A Messenger Multi Device Bot To Take Your Messenger To Another Level!`** 
 
@@ -136,7 +136,7 @@ ___
 
 ## 👨‍💻 **ABOUT THE DEVELOPER**  
   
-**Name:** **`SHUVO`**  
+**Name:** **`—͟͟͞͞𝐒𝐇𝐔𝐕𝐎`**  
 **Nice Name:** **`SHUVO`**  
 **Profession:** **`STUDENT & CHATBOT DEVELOPER`**  
 **Location:** **`BOGURA, BANGLADESH`**  
