@@ -32,7 +32,7 @@ module.exports.languages = {
 ┣━━━━━━━━━━━━━━━━┫
 ┃ ⚙ Prefix: %8
 ┃ 🤖 Bot Name: %9
-┃ 👑 Owner: 𝐒HUVO
+┃ 👑 Owner: 𝐒𝐇𝐔𝐕𝐎 
 ╰━━━━━━━━━━━━━━━━╯`,
         "helpList": "[ There are %1 commands. Use: \"%2help commandName\" to view more. ]",
         "user": "User",
