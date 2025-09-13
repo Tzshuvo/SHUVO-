@@ -29,9 +29,9 @@ const data = await alldown(content);
  fs.writeFileSync(__dirname + "/cache/auto.mp4", Buffer.from(video, "utf-8"))
 
  return api.sendMessage({
- body: `🔥🚀 𝐒𝐡𝐚𝐡𝐚𝐝𝐚𝐭 𝐂𝐡𝐚𝐭 𝐁𝐨𝐭🔥💻 
-📥⚡𝗔𝘂𝘁𝗼 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗿⚡📂
-🎬 𝐄𝐧𝐣𝐨𝐲 𝐭𝐡𝐞 𝐕𝐢𝐝𝐞𝐨 🎀`,
+ body: `🔥🚀—͟͟͞͞𝐒𝐇𝐔𝐕𝐎 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓🔥💻 
+📥⚡𝐀𝐔𝐓𝐎 𝐕𝐈𝐃𝐄𝐎 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑 ⚡📂
+🎬 𝐄𝐍𝐉𝐎𝐘 𝐓𝐇𝐄 𝐕𝐈𝐃𝐄𝐎 🎀`,
  attachment: fs.createReadStream(__dirname + "/cache/auto.mp4")
 
  }, event.threadID, event.messageID);
