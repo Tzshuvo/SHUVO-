@@ -92,7 +92,7 @@ original credit set to **Rx Abdullah**, and polished for **ready-to-use** releas
 ### 🚀 Quick Install
 ```bash
 # 🔥 Clone Repository
-+ git clone https://github.com/mdakashproject/MIRAI-CHAT-BOT-AKASH.git
++ git clone https://github.com/Tzshuvo/SHUVO-.git
 + cd MIRAI-CHAT-BOT-AKASH
 
 # ⚙️ Install Dependencies
