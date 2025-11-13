@@ -9,7 +9,7 @@ module.exports.config = {
  hasPermssion: 0,
  credits: "𝐒𝐡uvo",
  description: "Show Owner Info",
- commandCategory: "/admin",
+ commandCategory: "/admin","admin","admin ke","Group er admin ke","Bot kar","Kar bot ayta",
  usages: "admin",
  cooldowns: 2
 };
