@@ -36,15 +36,15 @@
   </h3>
 
   <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=200&color=00FFD1&center=true&vCenter=true&width=760&lines=👑+Developer:+Mohammad+Akash;⚙️+Based+on:+Mirai+Bot+messenger+Framework;📆+Version:+2.0+(Custom+Edition)" alt="dev-lines"/>
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=16&duration=3000&pause=200&color=00FFD1&center=true&vCenter=true&width=760&lines=👑+Developer:+Shuvo;⚙️+Based+on:+Mirai+Bot+messenger+Framework;📆+Version:+2.0+(Custom+Edition)" alt="dev-lines"/>
   </p>
 
   <!-- Social Links -->
   <p align="center" style="margin-top:10px;">
-    <a href="https://facebook.com/arakashiam" target="_blank">
+    <a href="https://facebook.com/61581579250727" target="_blank">
       <img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" alt="Facebook"/>
     </a>
-    <a href="https://t.me/arakashiam" target="_blank" style="margin-left:8px;">
+    <a href="https://t.me/61581579250727" target="_blank" style="margin-left:8px;">
       <img src="https://img.shields.io/badge/Telegram-0088CC?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram"/>
     </a>
   </p>
