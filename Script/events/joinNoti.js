@@ -1,136 +1,89 @@
+const fs = require("fs-extra");
+
 module.exports.config = {
-  name: "joinnoti",
+  name: "welcome",
+  version: "2.3",
+  credits: "Mohammad Akash",
+  description: "Send custom welcome message when new members join",
   eventType: ["log:subscribe"],
-  version: "1.0.2",
-  credits: "𝐒𝐡uvo",
-  description: "Welcome message with optional image/video",
   dependencies: {
-    "fs-extra": "",
-    "path": ""
+    "fs-extra": ""
   }
 };
 
-module.exports.onLoad = function () {
-  const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
-  const { join } = global.nodemodule["path"];
-  const paths = [
-    join(__dirname, "cache", "joinGif"),
-    join(__dirname, "cache", "randomgif")
-  ];
-  for (const path of paths) {
-    if (!existsSync(path)) mkdirSync(path, { recursive: true });
-  }
-};
+module.exports.run = async function({ api, event, Users, Threads }) {
+  const { threadID, logMessageData, author } = event;
+  const addedMembers = logMessageData.addedParticipants;
+  if (!addedMembers || addedMembers.length === 0) return;
 
-module.exports.run = async function({ api, event }) {
-  const fs = require("fs");
-  const path = require("path");
-  const { threadID } = event;
-  
-  const botPrefix = global.config.PREFIX || "/";
-  const botName = global.config.BOTNAME || "—͟͟͞͞𝐒𝐇𝐔𝐕𝐎 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓";
+  // 🕒 সময় নির্ধারণ
+  const now = new Date();
+  const hours = now.getHours();
+  const session =
+    hours <= 10 ? "morning" :
+    hours <= 12 ? "noon" :
+    hours <= 18 ? "afternoon" :
+    "evening";
 
- 
-  if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-    await api.changeNickname(`[ ${botPrefix} ] • ${botName}`, threadID, api.getCurrentUserID());
+  // 📚 গ্রুপ ইনফো
+  const threadInfo = await api.getThreadInfo(threadID);
+  const threadName = threadInfo.threadName || "this group";
+  const memberCount = threadInfo.participantIDs.length;
 
-    api.sendMessage("চ্ঁলে্ঁ এ্ঁসে্ঁছি্ঁ —͟͟͞͞𝐒𝐇𝐔𝐕𝐎 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓 এঁখঁনঁ তোঁমাঁদেঁরঁ সাঁথেঁ আঁড্ডাঁ দিঁবঁ..!", threadID, () => {
-      const randomGifPath = path.join(__dirname, "cache", "randomgif");
-      const allFiles = fs.readdirSync(randomGifPath).filter(file =>
-        [".mp4", ".jpg", ".png", ".jpeg", ".gif", ".mp3"].some(ext => file.endsWith(ext))
+  for (const user of addedMembers) {
+    const userID = user.userFbId;
+    const userName = user.fullName;
+    const botID = api.getCurrentUserID();
+
+    // ✅ যদি বটকে অ্যাড করা হয়
+    if (userID == botID) {
+      return api.sendMessage(
+`━━━━━━━━━━━━━━━━━━━━━
+🤖 ধন্যবাদ আমাকে গ্রুপে অ্যাড করার জন্য 💖
+
+⚙️ Bot Prefix :  /
+📜 সব কমান্ড দেখতে লিখুন :  /help
+
+চলুন একসাথে এই গ্রুপটা আরও মজার করে তুলি! 😄
+━━━━━━━━━━━━━━━━━━━━━`, 
+threadID
       );
-
-      const selected = allFiles.length > 0 
-        ? fs.createReadStream(path.join(randomGifPath, allFiles[Math.floor(Math.random() * allFiles.length)])) 
-        : null;
-
-      const messageBody = `╭•┄┅═══❁🌺❁═══┅┄•╮
-     আ্ঁস্ঁসা্ঁলা্ঁমু্ঁ💚আ্ঁলা্ঁই্ঁকু্ঁম্ঁ
-╰•┄┅═══❁🌺❁═══┅┄•╯
-
-𝐓𝐡𝐚𝐧𝐤 𝐲𝐨𝐮 𝐬𝐨 𝐦𝐮𝐜𝐡 𝐟𝐨𝐫 𝐚𝐝𝐝𝐢𝐧𝐠 𝐦𝐞 𝐭𝐨 𝐲𝐨𝐮𝐫 𝐢-𝐠𝐫𝐨𝐮𝐩-🖤🤗
-𝐈 𝐰𝐢𝐥𝐥 𝐚𝐥𝐰𝐚𝐲𝐬 𝐬𝐞𝐫𝐯𝐞 𝐲𝐨𝐮 𝐢𝐧𝐚𝐡𝐚𝐥𝐥𝐚𝐡 🌺❤️
-
-𝐓𝐨 𝐯𝐢𝐞𝐰 𝐚𝐧𝐲 𝐜𝐨𝐦𝐦𝐚𝐧𝐝:
-${botPrefix}Help
-${botPrefix}Info
-${botPrefix}Admin
-
-★ যেকোনো অভিযোগ অথবা হেল্প এর জন্য এডমিন 𝐒𝐇𝐔𝐕𝐎 কে নক করতে পারেন ★
-➤𝐌𝐞𝐬𝐬𝐞𝐧𝐠𝐞𝐫: https://m.me/100025645342388
-➤𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩: https://wa.me/+8801947946745
-
-❖⋆═══════════════════════⋆❖
-     𝐁𝐎𝐓 𝐀𝐃𝐌𝐈𝐍 ➢ —͟͟͞͞𝐒𝐇𝐔𝐕𝐎`;
-
-      if (selected) {
-        api.sendMessage({ body: messageBody, attachment: selected }, threadID);
-      } else {
-        api.sendMessage(messageBody, threadID);
-      }
-    });
-
-    return;
-  }
-
- 
-  try {
-    const { createReadStream, readdirSync } = global.nodemodule["fs-extra"];
-    let { threadName, participantIDs } = await api.getThreadInfo(threadID);
-    const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-    let mentions = [], nameArray = [], memLength = [], i = 0;
-
-    for (let id in event.logMessageData.addedParticipants) {
-      const userName = event.logMessageData.addedParticipants[id].fullName;
-      nameArray.push(userName);
-      mentions.push({ tag: userName, id });
-      memLength.push(participantIDs.length - i++);
     }
-    memLength.sort((a, b) => a - b);
 
-    let msg = (typeof threadData.customJoin === "undefined") ? `╭•┄┅═══❁🌺❁═══┅┄•╮
-     আ্ঁস্ঁসা্ঁলা্ঁমু্ঁ💚আ্ঁলা্ঁই্ঁকু্ঁম্ঁ
-╰•┄┅═══❁🌺❁═══┅┄•╯
-হাসি, মজা, ঠাট্টায় গড়ে উঠুক  
-চিরস্থায়ী বন্ধুত্বের বন্ধন।🥰
-ভালোবাসা ও সম্পর্ক থাকুক আজীবন।💝
+    // ✅ নতুন ইউজার হলে
+    const inviterName = await Users.getNameUser(author);
 
-➤ আশা করি আপনি এখানে হাসি-মজা করে 
-আড্ডা দিতে ভালোবাসবেন।😍
-➤ সবার সাথে মিলেমিশে থাকবেন।😉
-➤ উস্কানিমূলক কথা বা খারাপ ব্যবহার করবেন না।🚫
-➤ গ্রুপ এডমিনের কথা শুনবেন ও রুলস মেনে চলবেন।✅
+    // 🎀 ওয়েলকাম মেসেজ
+    let welcomeMessage = 
+`__আসসালামু আলাইকুম__
+═══════════════
+__𝑾𝑬𝑳𝑪𝑶𝑴𝑬 ➤ ${userName}__
 
-›› প্রিয় {name},  
-আপনি এই গ্রুপের {soThanhVien} নম্বর মেম্বার!
+_আমাদের ${threadName}_
+_এর পক্ষ থেকে আপনাকে_
+       __!! স্বাগতম !!__
+__'আপনি এই__
+        __গ্রুপের ${memberCount} নাম্বার মেমবার___!!
 
-›› গ্রুপ: {threadName}
+___𝙰𝚍𝚍𝚎𝚍 𝙱𝚢 : ${inviterName}___
 
-💌 🌺 𝐖 𝐄 𝐋 𝐂 𝐎 𝐌 𝐄 🌺 💌
-╭─╼╾─╼🌸╾─╼╾───╮
-   —͟͟͞͞𝐒𝐇𝐔𝐕𝐎 𝐂𝐇𝐀𝐓 𝐁𝐎𝐓 🌺
-╰───╼╾─╼🌸╾─╼╾─╯
+🌞 শুভ ${session}!
+𝙱𝚘𝚝 𝙾𝚠𝚗𝚎𝚛 :—͟͟͞͞𝐒𝐇𝐔𝐕𝐎`;
 
-❖⋆══════════════════════════⋆❖` : threadData.customJoin;
+    // ✅ নিকনেম সেট করা
+    try {
+      const nickname = `★ ${userName} | ${threadName} ★`;
+      await api.changeNickname(nickname, threadID, userID);
+    } catch (err) {
+      console.log("❌ Nickname set error:", err.message);
+    }
 
-    msg = msg
-      .replace(/\{name}/g, nameArray.join(', '))
-      .replace(/\{soThanhVien}/g, memLength.join(', '))
-      .replace(/\{threadName}/g, threadName);
+    // ✅ ফাইনাল মেসেজ পাঠানো
+    const form = {
+      body: welcomeMessage,
+      mentions: [{ tag: userName, id: userID }]
+    };
 
-    const joinGifPath = path.join(__dirname, "cache", "joinGif");
-    const files = readdirSync(joinGifPath).filter(file =>
-      [".mp4", ".jpg", ".png", ".jpeg", ".gif", ".mp3"].some(ext => file.endsWith(ext))
-    );
-    const randomFile = files.length > 0 
-      ? createReadStream(path.join(joinGifPath, files[Math.floor(Math.random() * files.length)])) 
-      : null;
-
-    return api.sendMessage(
-      randomFile ? { body: msg, attachment: randomFile, mentions } : { body: msg, mentions },
-      threadID
-    );
-  } catch (e) {
-    console.error(e);
+    api.sendMessage(form, threadID);
   }
 };
