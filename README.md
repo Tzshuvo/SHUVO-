@@ -64,7 +64,7 @@
 
   <!-- Call-to-action -->
   <p align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=00FFD1&center=true&vCenter=true&width=620&lines=Made+with+%E2%9D%A4%EF%B8%8F+by+Mohammad+Akash;Follow+on+FB+and+TG+for+updates!" alt="cta" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=00FFD1&center=true&vCenter=true&width=620&lines=Made+with+%E2%9D%A4%EF%B8%8F+by+SHUVO;Follow+on+FB+and+TG+for+updates!" alt="cta" />
   </p>
 
   <!-- Footer -->
