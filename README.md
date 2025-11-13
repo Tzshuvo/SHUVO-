@@ -9,7 +9,7 @@
 Assalamualaikum Everyone!  
 **Welcome to My SHUVO CHAT BOT Fork!**
 
-![Box-shaped Image](https://i.imgur.com/kc98hlr.jpeg)
+![Box-shaped Image](https://i.imgur.com/27UHLZE.jpeg)
 
 <p align="center" style="animation: glow 2s infinite alternate; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
   <span style="font-size: 24px; font-weight: bold;">SHUVO CHAT BOT</span><br>
